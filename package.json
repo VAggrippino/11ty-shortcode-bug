@@ -1,0 +1,23 @@
+{
+  "name": "11ty-shortcode-bug",
+  "version": "1.0.0",
+  "description": "bug demo, 11ty: permalinks forget how to use shortcodes with templateEngineOverride",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VAggrippino/11ty-shortcode-bug.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VAggrippino/11ty-shortcode-bug/issues"
+  },
+  "homepage": "https://github.com/VAggrippino/11ty-shortcode-bug#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

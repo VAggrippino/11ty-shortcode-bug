@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permalink Shortcode Bug</title>
+</head>
+<body>
+  <h1><code>templateEngineOverride</code> Breaks Permalink Shortcode</h1>
+  <div>2023/04</div>
+
+  <p>
+    When a page uses <code>templateEngineOverride</code>, it forgets how to
+    process shortcodes used in the <code>permalink</code> Front Matter value,
+    but only on the second and subsequent builds of the page.
+  </p>
+
+  <ul><li><a href="/2023/04/page-demonstrating-bug/">Page Demonstrating Bug</a></li><li><a href="/2023/04/unaffected-page/">Unaffected Page</a></li></ul>
+
+  <h2>Example</h2>
+  <p>
+    My site is a blog and I use a shortcode which formats the post dates so that
+    they work as part of the URL.
+  </p>
+    
+  <p>
+    I want to write a post discussing Liquid
+    syntax and I don't want the Liquid code used in the post to be processed by
+    the template engine. So, I change the template engine so that the Liquid
+    code in the post isn't processed.
+  </p>
+
+  <p>
+    In this situation, if I use the command <code>npx @11ty/eleventy</code>,
+    there are no issues. However, if I use
+    <code>npx @11ty/eleventy --serve</code> and make changes to the post with
+    the <code>templateEngineOverride</code>, it will create a folder named
+    exactly <code>{&#37; shortDate date %}</code> at the root of the site and
+    that will be used in collection item URLs resulting in a link that can't be
+    visited and a "URI malformed (via URIError)"" error in the console.
+  </p>
+
+  <p>
+    An odd <em>feature</em> of this problem is that, even with
+    <code>npx @11ty/eleventy --serve</code>, it builds the page correctly the
+    first time. It only breaks when changes are made to the page while it's
+    running.
+  </p>
+</body>
+</html>
